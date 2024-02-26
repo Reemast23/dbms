@@ -1,0 +1,23 @@
+DDL
+
+1. create table Employee(Emp_no int primary key,E_name varchar(50) not null,E_address varchar(100),E_ph_no varchar(12),Dept_name varchar(20),job_id int,salary decimal(10,2));
+Query OK, 0 rows affected (0.15 sec)
+ create table DEPARTMENT (Dept_no int primary key,Emp_no int,Emp_name varchar(220));
+Query OK, 0 rows affected (0.04 sec)
+
+2. alter table EMPLOYEE add hiredate date;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+3. alter table Employee drop column hiredate;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+4.drop table Employee;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> truncate table Employee;
+ERROR 1146 (42S02): Table 'bibin.employee' doesn't exist
+mysql> drop table DEPARTMENT;
+Query OK, 0 rows affected (0.01 sec)
+
