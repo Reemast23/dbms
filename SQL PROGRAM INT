@@ -1,0 +1,13 @@
+SQL> declare
+  2      var1 varchar(10);
+  3         num1 int(30);
+  4         begin
+  5         var1:='hello';
+  6         num1:=100;
+  7         dbms_output.Put_line('var1:'||var1);
+  8         dbms_output.Put_line('Num1:'||num1);
+  9        end;
+ 10       /
+ Output:
+var1:hello
+Num1:100
