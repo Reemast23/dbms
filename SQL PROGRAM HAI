@@ -1,0 +1,6 @@
+set serveroutput on
+SQL> begin
+  2  dbms_output.Put_line('Hai');
+  3  end;
+  4  /
+  output:Hai
