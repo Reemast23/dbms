@@ -1,0 +1,52 @@
+SQL> create table dept(eid int primary key,ename varchar(20),psal int,ploc varchar(30));
+
+Table created.
+
+SQL> CREATE OR REPLACE PROCEDURE addemp
+  2  (depid IN dept.eid%TYPE,
+  3  depname IN dept.ename%TYPE,
+  4  depsal IN dept.psal%TYPE,
+  5  deploc IN dept.ploc%TYPE)
+  6  IS
+  7  BEGIN
+  8  INSERT INTO dept Values(depid,depname,depsal,deploc);
+  9  dbms_output.Put_line('dpmt added');
+ 10  end;
+ 11  /
+
+Procedure created.
+SQL> select * from dept;
+
+no rows selected
+
+SQL> set serveroutput on
+SQL> execute addemp(2,'Mary',3000,'Klm');
+dpmt added
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from dept;
+
+       EID ENAME                      PSAL PLOC
+---------- -------------------- ---------- ------------------------------
+         2 Mary                       3000 Klm
+
+SQL> execute addemp(3,'Manu',5000,'Ktm');
+dpmt added
+
+PL/SQL procedure successfully completed.
+
+SQL> execute addemp(4,'Surya',8000,'Idukki');
+dpmt added
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from dept;
+
+       EID ENAME                      PSAL PLOC
+---------- -------------------- ---------- ------------------------------
+         2 Mary                       3000 Klm
+         3 Manu                       5000 Ktm
+         4 Surya                      8000 Idukki
+
+SQL>
