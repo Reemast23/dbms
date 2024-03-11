@@ -1,0 +1,28 @@
+SQL> set serveroutput on
+SQL>  DECLARE
+  2   a number;
+  3   b number;
+  4   c number;
+  5   FUNCTION findMax(x IN number, y IN number)
+  6   RETURN number
+  7    IS
+  8    z number;
+  9    BEGIN
+ 10
+ 11     IF x > y THEN
+ 12     z:= x;
+ 13     ELSE
+ 14     Z:= y;
+ 15     END IF;
+ 16     RETURN z;
+ 17     END;
+ 18     BEGIN
+ 19      a:= 23;
+ 20      b:= 45;
+ 21      c := findMax(a, b);
+ 22     dbms_output.put_line(' Maximum of (23,45): ' || c);
+ 23     END;
+ 24     /
+Maximum of (23,45): 45
+
+PL/SQL procedure successfully completed.
