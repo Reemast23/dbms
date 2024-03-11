@@ -1,0 +1,68 @@
+SQL> create table customers(id int,name varchar(20),dpmt varchar(20),salary int);
+
+Table created.
+
+SQL> Table created.
+SP2-0734: unknown command beginning "Table crea..." - rest of line ignored.
+SQL> insert into customers values(1,'sam','cs',2000);
+
+1 row created.
+
+SQL> 1 row created.
+SQL>  insert into customers values(2,'tam','it',3000);
+
+1 row created.
+
+SQL> 1 row created.
+SQL> insert into customers values(3,'ram','ec',2500);
+
+1 row created.
+
+SQL> 1 row created.
+SQL>  insert into customers values(4,'kam','mca',5000);
+
+1 row created.
+
+SQL> 1 row created.
+SQL> select * from customers;
+
+        ID NAME                 DPMT                     SALARY
+---------- -------------------- -------------------- ----------
+         1 sam                  cs                         2000
+         2 tam                  it                         3000
+         3 ram                  ec                         2500
+         4 kam                  mca                        5000
+
+SQL>         ID NAME                 DPMT                     SALARY
+SP2-0734: unknown command beginning "ID NAME   ..." - rest of line ignored.
+SQL> ---------- -------------------- -------------------- ----------
+SQL>          1 sam                  cs                         2000
+SQL>          2 tam                  it                         3000
+SQL>          3 ram                  ec                         2500
+SQL>          4 kam                  mca                        5000
+SQL> CREATE OR REPLACE FUNCTION totalCustomers
+  2          RETURN number IS
+  3             total number(2) := 0;
+  4          BEGIN
+  5             SELECT count(*) into total
+  6             FROM customers;
+  7              RETURN total;
+  8         END;
+  9        /
+
+Function created.
+
+SQL> Function created.
+SP2-0734: unknown command beginning "Function c..." - rest of line ignored.
+SQL>   DECLARE
+  2            c number(2);
+  3          BEGIN
+  4             c := totalCustomers();
+  5             dbms_output.put_line('Total no. of Customers: ' || c);
+  6          END;
+  7          /
+Total no. of Customers: 4
+
+PL/SQL procedure successfully completed.
+
+SQL> Total no. of Customers: 4
