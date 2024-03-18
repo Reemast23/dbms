@@ -1,0 +1,26 @@
+college> use admin
+switched to db admin
+admin> use school
+switched to db school
+school> use univ
+switched to db univ
+univ> db.dropDatabase()
+{ ok: 1, dropped: 'univ' }
+univ> use school
+switched to db school
+school> db.dropDatabase()
+{ ok: 1, dropped: 'school' }
+school> use dbms
+switched to db dbms
+dbms> db
+dbms
+dbms> db.createCollection("Marklist")
+{ ok: 1 }
+dbms> show collections
+Marklist
+dbms> db.createCollection("Parentdetails")
+{ ok: 1 }
+dbms> show collections
+Marklist
+Parentdetails
+dbms>
