@@ -924,7 +924,73 @@ stud1> db.details.updateOne({sname:'ram'},{$set:{sem:4}})
   modifiedCount: 1,
   upsertedCount: 0
 }
-stud1>
+stud1>stud1> db.details.find()
+[ acknowledged: true, deletedCount: 1 }
+  {cknowledged: true,
+    _id: ObjectId('660ae469f0f12b6db78bf202'),
+    roll: 1,nt: 3,
+    sname: 'ram',3,
+    dpmt: 'cse', 0
+    sem: 4,
+    cgpa: 7
+  },
+  {
+    _id: ObjectId('660ae469f0f12b6db78bf203'),
+    roll: 2,
+    sname: 'sam',
+    dpmt: 'it',
+    sem: 3,
+    cgpa: 5
+  },
+  {
+    _id: ObjectId('660ae469f0f12b6db78bf205'),
+    roll: 4,
+    sname: 'mary',
+    dpmt: 'ece',
+    sem: 5,
+    cgpa: 6
+  },
+  {
+    _id: ObjectId('660ae469f0f12b6db78bf206'),
+    roll: 5,
+    sname: 'rani',
+    dpmt: 'eee',
+    sem: 2,
+    cgpa: 8
+  },
+  {
+    _id: ObjectId('660ae469f0f12b6db78bf207'),
+    roll: 6,
+    sname: 'rony',
+    dpmt: 'cse',
+    sem: 4,
+    cgpa: 8
+  },
+  {
+    _id: ObjectId('660ae469f0f12b6db78bf208'),
+    roll: 7,
+    sname: 'ajay',
+    dpmt: 'cse',
+    sem: 4,
+    cgpa: 7
+  },
+  {
+    _id: ObjectId('660ae469f0f12b6db78bf209'),
+    roll: 8,
+    sname: 'jony',
+    dpmt: 'cse',
+    sem: 3,
+    cgpa: 6
+  },
+  {
+    _id: ObjectId('660ae469f0f12b6db78bf20a'),
+    roll: 9,
+    sname: 'sony',
+    dpmt: 'eee',
+    sem: 2,
+    cgpa: 6
+  }
+]
 { acknowledged: true, deletedCount: 1 }
   acknowledged: true,
   insertedId: null,
