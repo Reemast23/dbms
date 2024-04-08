@@ -1,0 +1,137 @@
+test> use univ
+switched to db univ
+univ> db.createCollection("s1mca1")
+{ ok: 1 }
+univ> db.s1mca1.insert([{roll:1,name:"june",age:20,dept:"mca",gender:"female"}])
+DeprecationWarning: Collection.insert() is deprecated. Use insertOne, insertMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('6613ba8eef5a6f40ff8bf202') }
+}
+univ> db.s1mca1.insert([{roll:2,name:"john",age:20,dept:"mca",gender:"male"}])
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('6613baacef5a6f40ff8bf203') }
+}
+univ> db.s1mca1.insert([{roll:3,name:"johny",age:21,dept:"mtech",gender:"male"}])
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('6613badbef5a6f40ff8bf204') }
+}
+univ> db.s1mca1.insert([{roll:4,name:"sherly",age:21,dept:"btech",gender:"female"}])
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('6613bafeef5a6f40ff8bf205') }
+}
+univ> db.s1mca1.insert([{roll:4,name:"sony",age:21,dept:"btech",gender:"male"}])
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('6613bb0cef5a6f40ff8bf206') }
+}
+univ> db.s1mca1.find()
+[
+  {
+    _id: ObjectId('6613ba8eef5a6f40ff8bf202'),
+    roll: 1,
+    name: 'june',
+    age: 20,
+    dept: 'mca',
+    gender: 'female'
+  },
+  {
+    _id: ObjectId('6613baacef5a6f40ff8bf203'),
+    roll: 2,
+    name: 'john',
+    age: 20,
+    dept: 'mca',
+    gender: 'male'
+  },
+  {
+    _id: ObjectId('6613badbef5a6f40ff8bf204'),
+    roll: 3,
+    name: 'johny',
+    age: 21,
+    dept: 'mtech',
+    gender: 'male'
+  },
+  {
+    _id: ObjectId('6613bafeef5a6f40ff8bf205'),
+    roll: 4,
+    name: 'sherly',
+    age: 21,
+    dept: 'btech',
+    gender: 'female'
+  },
+  {
+    _id: ObjectId('6613bb0cef5a6f40ff8bf206'),
+    roll: 4,
+    name: 'sony',
+    age: 21,
+    dept: 'btech',
+    gender: 'male'
+  }
+]
+univ> db.s1mca1.find({gender:"female"})
+[
+  {
+    _id: ObjectId('6613ba8eef5a6f40ff8bf202'),
+    roll: 1,
+    name: 'june',
+    age: 20,
+    dept: 'mca',
+    gender: 'female'
+  },
+  {
+    _id: ObjectId('6613bafeef5a6f40ff8bf205'),
+    roll: 4,
+    name: 'sherly',
+    age: 21,
+    dept: 'btech',
+    gender: 'female'
+  }
+]
+univ> db.s1mca1.find({gender:"male"})
+[
+  {
+    _id: ObjectId('6613baacef5a6f40ff8bf203'),
+    roll: 2,
+    name: 'john',
+    age: 20,
+    dept: 'mca',
+    gender: 'male'
+  },
+  {
+    _id: ObjectId('6613badbef5a6f40ff8bf204'),
+    roll: 3,
+    name: 'johny',
+    age: 21,
+    dept: 'mtech',
+    gender: 'male'
+  },
+  {
+    _id: ObjectId('6613bb0cef5a6f40ff8bf206'),
+    roll: 4,
+    name: 'sony',
+    age: 21,
+    dept: 'btech',
+    gender: 'male'
+  }
+]
+univ> db.s1mca1.aggregate([{$group:{_id:"$dept",total_student:{$sum:1}}}])
+[
+  { _id: 'mca', total_student: 2 },
+  { _id: 'mtech', total_student: 1 },
+  { _id: 'btech', total_student: 2 }
+]
+univ> db.s1mca1.aggregate([{$group:{_id:"$dept",avg_marks:{$avg:"mark"}}}])
+[
+  { _id: 'btech', avg_marks: null },
+  { _id: 'mca', avg_marks: null },
+  { _id: 'mtech', avg_marks: null }
+]
+univ> db.s1mca1.aggregate([{$match:{gender:"male"}},{$group:{_id:"$dept",total_male_students:{$sum:1}}}])
+[
+  { _id: 'mca', total_male_students: 1 },
+  { _id: 'mtech', total_male_students: 1 },
+  { _id: 'btech', total_male_students: 1 }
+]
